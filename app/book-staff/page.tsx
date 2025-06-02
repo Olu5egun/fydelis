@@ -352,7 +352,7 @@ export default function BookStaffPage() {
                             </SelectTrigger>
                             <SelectContent>
                               <SelectItem value="hca">Healthcare Assistant (HCA)</SelectItem>
-                              <SelectItem value="senior-hca">Senior Healthcare Assistant</SelectItem>
+                              <SelectItem value="senior-hca">Senior Healthcare Assistant (SHCA)</SelectItem>
                               <SelectItem value="sw">Support Worker (SW)</SelectItem>
                               <SelectItem value="rmn">Registered Mental Health Nurse (RMN)</SelectItem>
                               <SelectItem value="rgn">Registered General Nurse (RGN)</SelectItem>
