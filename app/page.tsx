@@ -123,7 +123,7 @@ export default function HomePage() {
               >
                 <div className="flex items-center text-gray-700">
                   <Phone className="w-4 h-4 mr-2" />
-                  <a href="tel:07828173835">07828173835</a>
+                  <a href="tel:03330909417">0333 090 9417</a>
                 </div>
               </div>
             </div>
@@ -159,8 +159,8 @@ export default function HomePage() {
               <p className="mt-4 text-teal-100">
                 Or call us directly:{" "}
                 <span className="text-teal-100 md:cursor-default">
-                  <a href="tel:07828173835" className="md:pointer-events-none">
-                    07828173835
+                  <a href="tel:03330909417" className="md:pointer-events-none">
+                    0333 090 9417
                   </a>
                 </span>
               </p>
@@ -178,8 +178,8 @@ export default function HomePage() {
                 </div>
                 <p className="text-lg font-bold text-center">
                   <span className="hover:text-gray-700 md:cursor-default">
-                    <a href="tel:07828173835" className="md:pointer-events-none">
-                      07828173835
+                    <a href="tel:03330909417" className="md:pointer-events-none">
+                      0333 090 9417
                     </a>
                   </span>
                 </p>
@@ -303,8 +303,8 @@ export default function HomePage() {
           <p className="mt-4 text-teal-100">
             Speak with our nursing-led team:{" "}
             <span className="font-bold text-lime-300 hover:text-lime-200 md:cursor-default">
-              <a href="tel:07828173835" className="md:pointer-events-none">
-                07828173835
+              <a href="tel:03330909417" className="md:pointer-events-none">
+                0333 090 9417
               </a>
             </span>
           </p>
@@ -363,8 +363,8 @@ export default function HomePage() {
                 <p className="flex items-center">
                   <Phone className="w-4 h-4 mr-2" />
                   <span className="text-gray-400 md:cursor-default">
-                    <a href="tel:07828173835" className="md:pointer-events-none">
-                      07828173835
+                    <a href="tel:03330909417" className="md:pointer-events-none">
+                      0333 090 9417
                     </a>
                   </span>
                 </p>

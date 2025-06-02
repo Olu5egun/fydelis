@@ -124,7 +124,7 @@ export default function LeadMagnetPage() {
               >
                 <div className="flex items-center text-gray-700">
                   <Phone className="w-4 h-4 mr-2" />
-                  <a href="tel:07828173835">07828173835</a>
+                  <a href="tel:03330909417">0333 090 9417</a>
                 </div>
               </div>
             </div>
@@ -145,8 +145,8 @@ export default function LeadMagnetPage() {
           <p className="text-teal-100">
             Need immediate help? Call us directly:{" "}
             <span className="text-teal-100 md:cursor-default">
-              <a href="tel:07828173835" className="md:pointer-events-none">
-                07828173835
+              <a href="tel:03330909417" className="md:pointer-events-none">
+                0333 090 9417
               </a>
             </span>
           </p>
@@ -650,8 +650,8 @@ export default function LeadMagnetPage() {
                   </p>
                   <p className="flex items-center justify-center text-gray-700 text-lg">
                     <Phone className="w-6 h-6 mr-2" />
-                    <a href="tel:07828173835" className="md:pointer-events-none">
-                      07828173835
+                    <a href="tel:03330909417" className="md:pointer-events-none">
+                      0333 090 9417
                     </a>
                   </p>
                 </CardContent>
@@ -707,8 +707,8 @@ export default function LeadMagnetPage() {
                 <p className="flex items-center">
                   <Phone className="w-4 h-4 mr-2" />
                   <span className="text-gray-400 md:cursor-default">
-                    <a href="tel:07828173835" className="md:pointer-events-none">
-                      07828173835
+                    <a href="tel:03330909417" className="md:pointer-events-none">
+                      0333 090 9417
                     </a>
                   </span>
                 </p>
