@@ -122,7 +122,7 @@ export default function ContactPage() {
                   isMobileMenuOpen ? "translate-x-0 opacity-100 delay-300" : "-translate-x-4 opacity-0"
                 }`}
               >
-                <div className="flex items-center text-teal-600 font-semibold">
+                <div className="flex items-center text-gray-700">
                   <Phone className="w-4 h-4 mr-2" />
                   <a href="tel:07828173835">07828173835</a>
                 </div>
@@ -143,7 +143,7 @@ export default function ContactPage() {
           </p>
           <p className="text-teal-100">
             Call us directly:{" "}
-            <span className="font-bold text-lime-300 hover:text-lime-200 md:cursor-default">
+            <span className="text-teal-100 md:cursor-default">
               <a href="tel:07828173835" className="md:pointer-events-none">
                 07828173835
               </a>
@@ -336,7 +336,7 @@ export default function ContactPage() {
                     <div>
                       <h4 className="font-semibold text-gray-900">Phone</h4>
                       <p className="text-gray-600">
-                        <span className="hover:text-teal-600 md:cursor-default">
+                        <span className="text-gray-600 md:cursor-default">
                           <a href="tel:07828173835" className="md:pointer-events-none">
                             07828173835
                           </a>
@@ -378,15 +378,12 @@ export default function ContactPage() {
                   <p className="text-gray-700 mb-4">
                     Need immediate assistance? Our team is available 24/7 for urgent staffing requirements.
                   </p>
-                  <Button
-                    className="w-full bg-lime-400 hover:bg-lime-500 text-gray-900 font-semibold text-lg px-8 py-4 md:pointer-events-none md:cursor-default"
-                    asChild
-                  >
+                  <div className="w-full text-center text-gray-700 text-lg px-8 py-4">
+                    <Phone className="w-6 h-6 mr-2 inline" />
                     <a href="tel:07828173835" className="md:pointer-events-none">
-                      <Phone className="w-6 h-6 mr-2" />
                       Call Now: 07828173835
                     </a>
-                  </Button>
+                  </div>
                 </CardContent>
               </Card>
             </div>
@@ -439,7 +436,7 @@ export default function ContactPage() {
               <div className="space-y-1 text-gray-400">
                 <p className="flex items-center">
                   <Phone className="w-4 h-4 mr-2" />
-                  <span className="hover:text-white md:cursor-default">
+                  <span className="text-gray-400 md:cursor-default">
                     <a href="tel:07828173835" className="md:pointer-events-none">
                       07828173835
                     </a>

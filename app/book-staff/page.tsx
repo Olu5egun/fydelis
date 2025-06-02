@@ -122,7 +122,7 @@ export default function BookStaffPage() {
                   isMobileMenuOpen ? "translate-x-0 opacity-100 delay-300" : "-translate-x-4 opacity-0"
                 }`}
               >
-                <div className="flex items-center text-teal-600 font-semibold">
+                <div className="flex items-center text-gray-700">
                   <Phone className="w-4 h-4 mr-2" />
                   <a href="tel:07828173835">07828173835</a>
                 </div>
@@ -143,7 +143,7 @@ export default function BookStaffPage() {
           </p>
           <p className="text-teal-100">
             Urgent requests? Call us directly:{" "}
-            <span className="font-bold text-lime-300 hover:text-lime-200 md:cursor-default">
+            <span className="text-teal-100 md:cursor-default">
               <a href="tel:07828173835" className="md:pointer-events-none">
                 07828173835
               </a>
@@ -919,7 +919,7 @@ export default function BookStaffPage() {
                   <p className="text-gray-700 mb-4">
                     Need immediate assistance? Call us now for urgent staffing needs.
                   </p>
-                  <p className="flex items-center justify-center text-gray-900 font-semibold text-lg">
+                  <p className="flex items-center justify-center text-gray-700 text-lg">
                     <Phone className="w-6 h-6 mr-2" />
                     <a href="tel:07828173835" className="md:pointer-events-none">
                       07828173835
@@ -977,7 +977,7 @@ export default function BookStaffPage() {
               <div className="space-y-1 text-gray-400">
                 <p className="flex items-center">
                   <Phone className="w-4 h-4 mr-2" />
-                  <span className="hover:text-white md:cursor-default">
+                  <span className="text-gray-400 md:cursor-default">
                     <a href="tel:07828173835" className="md:pointer-events-none">
                       07828173835
                     </a>

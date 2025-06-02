@@ -107,7 +107,7 @@ export default function CandidatesPage() {
                   isMobileMenuOpen ? "translate-x-0 opacity-100 delay-300" : "-translate-x-4 opacity-0"
                 }`}
               >
-                <div className="flex items-center text-teal-600 font-semibold">
+                <div className="flex items-center text-gray-700">
                   <Phone className="w-4 h-4 mr-2" />
                   <a href="tel:07828173835">07828173835</a>
                 </div>
@@ -148,7 +148,7 @@ export default function CandidatesPage() {
               </div>
               <p className="mt-4 text-teal-100">
                 Or call us directly:{" "}
-                <span className="font-bold text-lime-300 hover:text-lime-200 md:cursor-default">
+                <span className="text-teal-100 md:cursor-default">
                   <a href="tel:07828173835" className="md:pointer-events-none">
                     07828173835
                   </a>
@@ -292,7 +292,7 @@ export default function CandidatesPage() {
 
           <p className="mt-4 text-teal-100">
             Questions? Call us on{" "}
-            <span className="font-bold text-lime-300 hover:text-lime-200 md:cursor-default">
+            <span className="text-teal-100 md:cursor-default">
               <a href="tel:07828173835" className="md:pointer-events-none">
                 07828173835
               </a>
@@ -346,7 +346,7 @@ export default function CandidatesPage() {
               <div className="space-y-2 text-gray-400">
                 <p className="flex items-center">
                   <Phone className="w-4 h-4 mr-2" />
-                  <span className="hover:text-white md:cursor-default">
+                  <span className="text-gray-400 md:cursor-default">
                     <a href="tel:07828173835" className="md:pointer-events-none">
                       07828173835
                     </a>
