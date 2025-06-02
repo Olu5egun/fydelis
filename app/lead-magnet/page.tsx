@@ -646,7 +646,7 @@ export default function LeadMagnetPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-700 mb-4">
-                    For urgent staffing needs or if you need to speak with someone immediately, call us now.
+                    Need immediate assistance? Call us now for urgent staffing needs.
                   </p>
                   <Button
                     className="w-full bg-lime-400 hover:bg-lime-500 text-gray-900 font-semibold text-lg px-8 py-4 md:pointer-events-none md:cursor-default"
@@ -727,6 +727,13 @@ export default function LeadMagnetPage() {
 
           <div className="border-t border-gray-800 mt-6 pt-6 text-center text-gray-400">
             <p>&copy; 2024 Fydelis Care. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  )
+}
+</merged_ All rights reserved.</p>
           </div>
         </div>
       </footer>
