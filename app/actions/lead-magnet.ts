@@ -16,6 +16,7 @@ export interface LeadMagnetData {
   endTime: string
   urgencyLevel: string
   experienceLevel: string
+  currentStaffingProvider: string
   specificRequirements?: string
 }
 
@@ -38,6 +39,7 @@ export interface LeadMagnetState {
     endTime?: string[]
     urgencyLevel?: string[]
     experienceLevel?: string[]
+    currentStaffingProvider?: string[]
   }
 }
 
@@ -137,6 +139,7 @@ export async function submitLeadMagnet(prevState: LeadMagnetState, formData: For
     endTime: formData.get("endTime") as string,
     urgencyLevel: formData.get("urgencyLevel") as string,
     experienceLevel: formData.get("experienceLevel") as string,
+    currentStaffingProvider: formData.get("currentStaffingProvider") as string,
     specificRequirements: formData.get("specificRequirements") as string,
   }
 
@@ -210,6 +213,10 @@ export async function submitLeadMagnet(prevState: LeadMagnetState, formData: For
     errors.experienceLevel = ["Please select the required experience level"]
   }
 
+  if (!data.currentStaffingProvider) {
+    errors.currentStaffingProvider = ["Please select your current staffing provider"]
+  }
+
   // Validate that end time is after start time
   if (data.startTime && data.endTime && validateTime(data.startTime) && validateTime(data.endTime)) {
     const [startHour, startMin] = data.startTime.split(":").map(Number)
@@ -281,6 +288,10 @@ FREE SHIFT REQUEST - LEAD MAGNET
   
   <tr style="background-color: #f0f0f0;">
     <th colspan="2" style="text-align: left; font-size: 18px; padding: 12px;">Staffing Requirements</th>
+  </tr>
+  <tr>
+    <td style="font-weight: bold;">Current Provider:</td>
+    <td>${data.currentStaffingProvider}</td>
   </tr>
   <tr>
     <td style="font-weight: bold;">Staff Type:</td>
