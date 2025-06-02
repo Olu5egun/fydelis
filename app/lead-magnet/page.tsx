@@ -649,7 +649,8 @@ export default function LeadMagnetPage() {
                     Need immediate assistance? Call us now for urgent staffing needs.
                   </p>
                   <Button
-                    className="w-full bg-lime-400 hover:bg-lime-500 text-gray-900 font-semibold text-lg px-8 py-4 md:pointer-events-none md:cursor-default"
+                    variant="outline"
+                    className="w-full border-gray-300 hover:bg-gray-50 text-gray-900 font-semibold text-lg px-8 py-4 md:pointer-events-none md:cursor-default"
                     asChild
                   >
                     <a href="tel:07828173835" className="md:pointer-events-none">
@@ -726,17 +727,5 @@ export default function LeadMagnetPage() {
           </div>
 
           <div className="border-t border-gray-800 mt-6 pt-6 text-center text-gray-400">
-            <p>&copy; 2024 Fydelis Care. All rights reserved.</p>
+            <p>&copy; 2024 Fydelis Care.</p>\
           </div>
-        </div>
-      </footer>
-    </div>
-  )
-}
-</merged_ All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
-    </div>
-  )
-}

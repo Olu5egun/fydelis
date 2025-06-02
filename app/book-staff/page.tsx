@@ -920,7 +920,8 @@ export default function BookStaffPage() {
                     Need immediate assistance? Call us now for urgent staffing needs.
                   </p>
                   <Button
-                    className="w-full bg-lime-400 hover:bg-lime-500 text-gray-900 font-semibold text-lg px-8 py-4 md:pointer-events-none md:cursor-default"
+                    variant="outline"
+                    className="w-full border-gray-300 hover:bg-gray-50 text-gray-900 font-semibold text-lg px-8 py-4 md:pointer-events-none md:cursor-default"
                     asChild
                   >
                     <a href="tel:07828173835" className="md:pointer-events-none">
