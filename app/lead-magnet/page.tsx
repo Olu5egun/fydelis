@@ -733,4 +733,10 @@ export default function LeadMagnetPage() {
     </div>
   )
 }
-</merged_
+</merged_ All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  )
+}
