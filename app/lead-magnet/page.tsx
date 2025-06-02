@@ -648,16 +648,12 @@ export default function LeadMagnetPage() {
                   <p className="text-gray-700 mb-4">
                     Need immediate assistance? Call us now for urgent staffing needs.
                   </p>
-                  <Button
-                    variant="outline"
-                    className="w-full border-gray-300 hover:bg-gray-50 text-gray-900 font-semibold text-lg px-8 py-4 md:pointer-events-none md:cursor-default"
-                    asChild
-                  >
+                  <p className="flex items-center justify-center text-gray-900 font-semibold text-lg">
+                    <Phone className="w-6 h-6 mr-2" />
                     <a href="tel:07828173835" className="md:pointer-events-none">
-                      <Phone className="w-6 h-6 mr-2" />
-                      Call Now: 07828173835
+                      07828173835
                     </a>
-                  </Button>
+                  </p>
                 </CardContent>
               </Card>
             </div>
@@ -727,5 +723,10 @@ export default function LeadMagnetPage() {
           </div>
 
           <div className="border-t border-gray-800 mt-6 pt-6 text-center text-gray-400">
-            <p>&copy; 2024 Fydelis Care.</p>\
+            <p>&copy; 2024 Fydelis Care.</p>
           </div>
+        </div>
+      </footer>
+    </div>
+  )
+}
