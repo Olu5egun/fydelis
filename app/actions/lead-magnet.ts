@@ -244,11 +244,11 @@ export async function submitLeadMagnet(prevState: LeadMagnetState, formData: For
 
     // Example email content that would be sent:
     const emailContent = `
-LEAD MAGNET SUBMISSION - STAFFING GUIDE REQUEST
+FREE SHIFT REQUEST - LEAD MAGNET
 
 <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%; font-family: Arial, sans-serif;">
   <tr style="background-color: #f0f0f0;">
-    <th colspan="2" style="text-align: left; font-size: 18px; padding: 12px;">Contact Details</th>
+    <th colspan="2" style="text-align: left; font-size: 18px; padding: 12px;">FREE SHIFT REQUEST - Contact Details</th>
   </tr>
   <tr>
     <td style="font-weight: bold; width: 30%;">Name:</td>
@@ -337,7 +337,7 @@ LEAD MAGNET SUBMISSION - STAFFING GUIDE REQUEST
   </tr>
 </table>
 
-Email would be sent to: leads@fydelis-care.com
+Email would be sent to: freeshifts@fydelis-care.com
 `
 
     console.log("Lead magnet submission that would be sent:", emailContent)
@@ -345,7 +345,7 @@ Email would be sent to: leads@fydelis-care.com
     return {
       success: true,
       message:
-        "Thank you! Your staffing guide request has been submitted. Check your email for the comprehensive staffing guide and our team will also contact you within 24 hours to discuss your specific needs.",
+        "Thank you! Your FREE shift request has been submitted. Our team will contact you within the hour for urgent requests, or within 2 hours for standard requests to arrange your complimentary staffing trial.",
     }
   } catch (error) {
     console.error("Error submitting lead magnet:", error)

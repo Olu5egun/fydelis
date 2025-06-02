@@ -1,6 +1,6 @@
 "use client"
 
-import { Phone, Mail, Users, Menu, X, CheckCircle, AlertCircle, MapPin, Download } from "lucide-react"
+import { Phone, Mail, Users, Menu, X, CheckCircle, AlertCircle, MapPin } from "lucide-react"
 import { useState } from "react"
 import { useActionState } from "react"
 import { Button } from "@/components/ui/button"
@@ -136,11 +136,11 @@ export default function LeadMagnetPage() {
       <section className="bg-gradient-to-br from-teal-400 to-teal-600 text-white py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
-            Get Your FREE <span className="text-lime-300">Healthcare Staffing Guide</span>
+            Try Our Service <span className="text-lime-300">FREE</span> - One Shift, No Commitment
           </h1>
           <p className="text-lg sm:text-xl mb-6 text-teal-50">
-            Download our comprehensive guide to healthcare staffing solutions. Learn best practices, cost-saving tips,
-            and how to find qualified professionals for your organisation.
+            Experience the Fydelis Care difference with a complimentary shift. See firsthand how our qualified
+            healthcare professionals can support your organisation with no upfront cost or commitment.
           </p>
           <p className="text-teal-100">
             Need immediate help? Call us directly:{" "}
@@ -161,10 +161,10 @@ export default function LeadMagnetPage() {
             <div className="lg:col-span-2">
               <Card className="bg-white shadow-lg">
                 <CardHeader>
-                  <CardTitle className="text-2xl font-bold text-gray-900">Download Your FREE Staffing Guide</CardTitle>
+                  <CardTitle className="text-2xl font-bold text-gray-900">Request Your FREE Trial Shift</CardTitle>
                   <p className="text-gray-600">
-                    Complete this form to receive your comprehensive healthcare staffing guide and get personalized
-                    recommendations for your organisation.
+                    Complete this form to request your complimentary shift. We'll match you with a qualified healthcare
+                    professional at no cost to demonstrate our service quality.
                   </p>
                 </CardHeader>
                 <CardContent className="space-y-6">
@@ -333,9 +333,9 @@ export default function LeadMagnetPage() {
 
                     {/* Staffing Requirements Section */}
                     <div className="border-b border-gray-200 pb-6">
-                      <h3 className="text-lg font-semibold text-gray-900 mb-4">Current Staffing Needs (Optional)</h3>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-4">Free Shift Requirements</h3>
                       <p className="text-sm text-gray-600 mb-4">
-                        Help us personalize your guide by sharing your current staffing requirements.
+                        Tell us about your free shift needs so we can provide the perfect match.
                       </p>
 
                       <div className="grid md:grid-cols-2 gap-4">
@@ -344,7 +344,7 @@ export default function LeadMagnetPage() {
                           <Label htmlFor="staffTypeNeeded" className="text-sm font-medium text-gray-700">
                             Type of Staff Needed
                           </Label>
-                          <Select name="staffTypeNeeded" disabled={isPending}>
+                          <Select name="staffTypeNeeded" required disabled={isPending}>
                             <SelectTrigger className={`mt-1 ${state?.errors?.staffTypeNeeded ? "border-red-500" : ""}`}>
                               <SelectValue placeholder="Select staff type" />
                             </SelectTrigger>
@@ -366,7 +366,7 @@ export default function LeadMagnetPage() {
                           <Label htmlFor="numberOfStaff" className="text-sm font-medium text-gray-700">
                             Number of Staff Needed
                           </Label>
-                          <Select name="numberOfStaff" disabled={isPending}>
+                          <Select name="numberOfStaff" required disabled={isPending}>
                             <SelectTrigger className={`mt-1 ${state?.errors?.numberOfStaff ? "border-red-500" : ""}`}>
                               <SelectValue placeholder="Select number" />
                             </SelectTrigger>
@@ -391,7 +391,7 @@ export default function LeadMagnetPage() {
                           <Label htmlFor="experienceLevel" className="text-sm font-medium text-gray-700">
                             Required Experience Level
                           </Label>
-                          <Select name="experienceLevel" disabled={isPending}>
+                          <Select name="experienceLevel" required disabled={isPending}>
                             <SelectTrigger className={`mt-1 ${state?.errors?.experienceLevel ? "border-red-500" : ""}`}>
                               <SelectValue placeholder="Select experience level" />
                             </SelectTrigger>
@@ -413,7 +413,7 @@ export default function LeadMagnetPage() {
                           <Label htmlFor="urgencyLevel" className="text-sm font-medium text-gray-700">
                             Urgency Level
                           </Label>
-                          <Select name="urgencyLevel" disabled={isPending}>
+                          <Select name="urgencyLevel" required disabled={isPending}>
                             <SelectTrigger className={`mt-1 ${state?.errors?.urgencyLevel ? "border-red-500" : ""}`}>
                               <SelectValue placeholder="Select urgency" />
                             </SelectTrigger>
@@ -433,7 +433,7 @@ export default function LeadMagnetPage() {
 
                     {/* Shift Details Section */}
                     <div className="border-b border-gray-200 pb-6">
-                      <h3 className="text-lg font-semibold text-gray-900 mb-4">Typical Shift Details (Optional)</h3>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-4">Free Shift Details</h3>
 
                       <div className="grid md:grid-cols-2 gap-4">
                         {/* Date Needed */}
@@ -445,6 +445,7 @@ export default function LeadMagnetPage() {
                             id="dateNeeded"
                             name="dateNeeded"
                             type="date"
+                            required
                             className={`mt-1 ${state?.errors?.dateNeeded ? "border-red-500" : ""}`}
                             disabled={isPending}
                             min={new Date().toISOString().split("T")[0]}
@@ -459,7 +460,7 @@ export default function LeadMagnetPage() {
                           <Label htmlFor="shiftType" className="text-sm font-medium text-gray-700">
                             Typical Shift Type
                           </Label>
-                          <Select name="shiftType" disabled={isPending}>
+                          <Select name="shiftType" required disabled={isPending}>
                             <SelectTrigger className={`mt-1 ${state?.errors?.shiftType ? "border-red-500" : ""}`}>
                               <SelectValue placeholder="Select shift type" />
                             </SelectTrigger>
@@ -480,7 +481,7 @@ export default function LeadMagnetPage() {
                           <Label htmlFor="startTime" className="text-sm font-medium text-gray-700">
                             Typical Start Time
                           </Label>
-                          <Select name="startTime" disabled={isPending}>
+                          <Select name="startTime" required disabled={isPending}>
                             <SelectTrigger className={`mt-1 ${state?.errors?.startTime ? "border-red-500" : ""}`}>
                               <SelectValue placeholder="Select start time" />
                             </SelectTrigger>
@@ -503,7 +504,7 @@ export default function LeadMagnetPage() {
                           <Label htmlFor="endTime" className="text-sm font-medium text-gray-700">
                             Typical End Time
                           </Label>
-                          <Select name="endTime" disabled={isPending}>
+                          <Select name="endTime" required disabled={isPending}>
                             <SelectTrigger className={`mt-1 ${state?.errors?.endTime ? "border-red-500" : ""}`}>
                               <SelectValue placeholder="Select end time" />
                             </SelectTrigger>
@@ -548,12 +549,12 @@ export default function LeadMagnetPage() {
                       {isPending ? (
                         <>
                           <div className="w-5 h-5 mr-2 border-2 border-gray-900 border-t-transparent rounded-full animate-spin" />
-                          Sending Guide...
+                          Submitting Free Shift Request...
                         </>
                       ) : (
                         <>
-                          <Download className="w-6 h-6 mr-2" />
-                          Get My FREE Staffing Guide
+                          <Users className="w-6 h-6 mr-2" />
+                          Request My FREE Shift
                         </>
                       )}
                     </Button>
@@ -566,15 +567,15 @@ export default function LeadMagnetPage() {
             <div className="space-y-6">
               <Card className="bg-white shadow-lg">
                 <CardHeader>
-                  <CardTitle className="text-xl font-bold text-gray-900">What's Included</CardTitle>
+                  <CardTitle className="text-xl font-bold text-gray-900">What You Get</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-start space-x-3">
                     <CheckCircle className="w-6 h-6 text-teal-500 mt-1" />
                     <div>
-                      <h4 className="font-semibold text-gray-900">Comprehensive Staffing Guide</h4>
+                      <h4 className="font-semibold text-gray-900">One Complete Shift FREE</h4>
                       <p className="text-sm text-gray-600">
-                        30+ page guide covering best practices, compliance, and cost optimization
+                        Experience our service with a fully qualified healthcare professional at no cost
                       </p>
                     </div>
                   </div>
@@ -582,9 +583,9 @@ export default function LeadMagnetPage() {
                   <div className="flex items-start space-x-3">
                     <CheckCircle className="w-6 h-6 text-lime-500 mt-1" />
                     <div>
-                      <h4 className="font-semibold text-gray-900">Personalized Consultation</h4>
+                      <h4 className="font-semibold text-gray-900">No Commitment Required</h4>
                       <p className="text-sm text-gray-600">
-                        Free 30-minute consultation to discuss your specific needs
+                        Try our service risk-free with no contracts or ongoing obligations
                       </p>
                     </div>
                   </div>
@@ -592,8 +593,10 @@ export default function LeadMagnetPage() {
                   <div className="flex items-start space-x-3">
                     <CheckCircle className="w-6 h-6 text-purple-500 mt-1" />
                     <div>
-                      <h4 className="font-semibold text-gray-900">Cost Calculator Tool</h4>
-                      <p className="text-sm text-gray-600">Excel template to calculate and compare staffing costs</p>
+                      <h4 className="font-semibold text-gray-900">Quality Guarantee</h4>
+                      <p className="text-sm text-gray-600">
+                        Fully vetted, qualified professionals who meet our high standards
+                      </p>
                     </div>
                   </div>
                 </CardContent>
@@ -621,7 +624,7 @@ export default function LeadMagnetPage() {
 
               <Card className="bg-gradient-to-br from-teal-50 to-lime-50 border-teal-200">
                 <CardHeader>
-                  <CardTitle className="text-xl font-bold text-gray-900">Need Immediate Help?</CardTitle>
+                  <CardTitle className="text-xl font-bold text-gray-900">Questions About Your Free Shift?</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-700 mb-4">
