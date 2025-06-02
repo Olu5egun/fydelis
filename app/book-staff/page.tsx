@@ -33,16 +33,32 @@ export default function BookStaffPage() {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-10">
-              <Link href="/#services" className="text-gray-700 hover:text-teal-600 font-medium text-lg">
+              <Link
+                href="/#services"
+                className="text-gray-700 hover:text-teal-600 font-medium text-lg"
+                onClick={() => window.scrollTo(0, 0)}
+              >
                 Services
               </Link>
-              <Link href="/about" className="text-gray-700 hover:text-teal-600 font-medium text-lg">
+              <Link
+                href="/about"
+                className="text-gray-700 hover:text-teal-600 font-medium text-lg"
+                onClick={() => window.scrollTo(0, 0)}
+              >
                 About Us
               </Link>
-              <Link href="/candidates" className="text-gray-700 hover:text-teal-600 font-medium text-lg">
+              <Link
+                href="/candidates"
+                className="text-gray-700 hover:text-teal-600 font-medium text-lg"
+                onClick={() => window.scrollTo(0, 0)}
+              >
                 Candidates
               </Link>
-              <Link href="/contact" className="text-gray-700 hover:text-teal-600 font-medium text-lg">
+              <Link
+                href="/contact"
+                className="text-gray-700 hover:text-teal-600 font-medium text-lg"
+                onClick={() => window.scrollTo(0, 0)}
+              >
                 Contact Us
               </Link>
             </nav>
@@ -50,7 +66,7 @@ export default function BookStaffPage() {
             {/* Desktop CTA */}
             <div className="hidden md:flex">
               <Button className="bg-lime-400 hover:bg-lime-500 text-gray-900 font-semibold" asChild>
-                <Link href="/book-staff">
+                <Link href="/book-staff" onClick={() => window.scrollTo(0, 0)}>
                   <Users className="w-5 h-5 mr-2" />
                   Request Staff Now
                 </Link>
@@ -86,7 +102,10 @@ export default function BookStaffPage() {
                 className={`block px-3 py-2 text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50 rounded-md transition-all duration-200 transform ${
                   isMobileMenuOpen ? "translate-x-0 opacity-100 delay-75" : "-translate-x-4 opacity-0"
                 }`}
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => {
+                  setIsMobileMenuOpen(false)
+                  window.scrollTo(0, 0)
+                }}
               >
                 Services
               </Link>
@@ -95,7 +114,10 @@ export default function BookStaffPage() {
                 className={`block px-3 py-2 text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50 rounded-md transition-all duration-200 transform ${
                   isMobileMenuOpen ? "translate-x-0 opacity-100 delay-100" : "-translate-x-4 opacity-0"
                 }`}
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => {
+                  setIsMobileMenuOpen(false)
+                  window.scrollTo(0, 0)
+                }}
               >
                 About Us
               </Link>
@@ -104,7 +126,10 @@ export default function BookStaffPage() {
                 className={`block px-3 py-2 text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50 rounded-md transition-all duration-200 transform ${
                   isMobileMenuOpen ? "translate-x-0 opacity-100 delay-150" : "-translate-x-4 opacity-0"
                 }`}
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => {
+                  setIsMobileMenuOpen(false)
+                  window.scrollTo(0, 0)
+                }}
               >
                 Candidates
               </Link>
@@ -113,7 +138,10 @@ export default function BookStaffPage() {
                 className={`block px-3 py-2 text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50 rounded-md transition-all duration-200 transform ${
                   isMobileMenuOpen ? "translate-x-0 opacity-100 delay-200" : "-translate-x-4 opacity-0"
                 }`}
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => {
+                  setIsMobileMenuOpen(false)
+                  window.scrollTo(0, 0)
+                }}
               >
                 Contact Us
               </Link>
@@ -150,7 +178,7 @@ export default function BookStaffPage() {
             </span>
           </p>
           <Button className="mt-6 bg-lime-400 hover:bg-lime-500 text-gray-900 font-semibold text-lg px-8 py-4" asChild>
-            <Link href="/book-staff">
+            <Link href="/book-staff" onClick={() => window.scrollTo(0, 0)}>
               <Users className="w-6 h-6 mr-2" />
               Request Staff Now
             </Link>
@@ -950,22 +978,38 @@ export default function BookStaffPage() {
               <h5 className="text-lg font-semibold mb-3">Quick Links</h5>
               <ul className="space-y-1 text-gray-400">
                 <li>
-                  <Link href="/#services" className="hover:text-white transition-colors">
+                  <Link
+                    href="/#services"
+                    className="hover:text-white transition-colors"
+                    onClick={() => window.scrollTo(0, 0)}
+                  >
                     Services
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about" className="hover:text-white transition-colors">
+                  <Link
+                    href="/about"
+                    className="hover:text-white transition-colors"
+                    onClick={() => window.scrollTo(0, 0)}
+                  >
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link href="/candidates" className="hover:text-white transition-colors">
+                  <Link
+                    href="/candidates"
+                    className="hover:text-white transition-colors"
+                    onClick={() => window.scrollTo(0, 0)}
+                  >
                     Candidates
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="hover:text-white transition-colors">
+                  <Link
+                    href="/contact"
+                    className="hover:text-white transition-colors"
+                    onClick={() => window.scrollTo(0, 0)}
+                  >
                     Contact Us
                   </Link>
                 </li>
