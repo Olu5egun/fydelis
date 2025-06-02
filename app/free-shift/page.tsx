@@ -11,7 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import Link from "next/link"
-import { submitLeadMagnet, type LeadMagnetState } from "@/app/actions/lead-magnet"
+import { submitLeadMagnet, type LeadMagnetState } from "@/app/actions/free-shift"
 
 const initialState: LeadMagnetState = {}
 
