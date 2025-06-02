@@ -266,7 +266,7 @@ export default function LeadMagnetPage() {
                         </div>
 
                         {/* Postcode */}
-                        <div>
+                        <div className="mb-4">
                           <Label htmlFor="postcode" className="text-sm font-medium text-gray-700">
                             Postcode *
                           </Label>
@@ -286,6 +286,24 @@ export default function LeadMagnetPage() {
                           </div>
                           {state?.errors?.postcode && (
                             <p className="mt-1 text-sm text-red-600">{state.errors.postcode[0]}</p>
+                          )}
+                        </div>
+
+                        {/* Current Staffing Provider */}
+                        <div>
+                          <Label htmlFor="currentStaffingProvider" className="text-sm font-medium text-gray-700">
+                            Current Staffing Provider
+                          </Label>
+                          <Input
+                            id="currentStaffingProvider"
+                            name="currentStaffingProvider"
+                            type="text"
+                            className={`mt-1 ${state?.errors?.currentStaffingProvider ? "border-red-500" : ""}`}
+                            placeholder="e.g. NHS Professionals, Reed, or 'None'"
+                            disabled={isPending}
+                          />
+                          {state?.errors?.currentStaffingProvider && (
+                            <p className="mt-1 text-sm text-red-600">{state.errors.currentStaffingProvider[0]}</p>
                           )}
                         </div>
                       </div>
@@ -383,34 +401,6 @@ export default function LeadMagnetPage() {
                             <p className="mt-1 text-sm text-red-600">{state.errors.numberOfStaff[0]}</p>
                           )}
                         </div>
-                      </div>
-
-                      <div className="mt-4">
-                        <Label htmlFor="currentStaffingProvider" className="text-sm font-medium text-gray-700">
-                          Current Staffing Provider *
-                        </Label>
-                        <Select name="currentStaffingProvider" required disabled={isPending}>
-                          <SelectTrigger
-                            className={`mt-1 ${state?.errors?.currentStaffingProvider ? "border-red-500" : ""}`}
-                          >
-                            <SelectValue placeholder="Select your current provider" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="none">No Current Provider</SelectItem>
-                            <SelectItem value="internal">Internal Staff Only</SelectItem>
-                            <SelectItem value="nhs-professionals">NHS Professionals</SelectItem>
-                            <SelectItem value="reed">Reed</SelectItem>
-                            <SelectItem value="randstad">Randstad</SelectItem>
-                            <SelectItem value="healthcare-at-home">Healthcare at Home</SelectItem>
-                            <SelectItem value="prestige-nursing">Prestige Nursing</SelectItem>
-                            <SelectItem value="newcross">Newcross Healthcare</SelectItem>
-                            <SelectItem value="care-uk">Care UK</SelectItem>
-                            <SelectItem value="other">Other Provider</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        {state?.errors?.currentStaffingProvider && (
-                          <p className="mt-1 text-sm text-red-600">{state.errors.currentStaffingProvider[0]}</p>
-                        )}
                       </div>
 
                       <div className="grid md:grid-cols-2 gap-4 mt-4">

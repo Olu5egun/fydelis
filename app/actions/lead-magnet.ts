@@ -8,6 +8,7 @@ export interface LeadMagnetData {
   postcode: string
   contactPhone: string
   contactEmail: string
+  currentStaffingProvider: string
   staffTypeNeeded: string
   numberOfStaff: string
   dateNeeded: string
@@ -16,7 +17,6 @@ export interface LeadMagnetData {
   endTime: string
   urgencyLevel: string
   experienceLevel: string
-  currentStaffingProvider: string
   specificRequirements?: string
 }
 
@@ -31,6 +31,7 @@ export interface LeadMagnetState {
     postcode?: string[]
     contactPhone?: string[]
     contactEmail?: string[]
+    currentStaffingProvider?: string[]
     staffTypeNeeded?: string[]
     numberOfStaff?: string[]
     dateNeeded?: string[]
@@ -39,7 +40,6 @@ export interface LeadMagnetState {
     endTime?: string[]
     urgencyLevel?: string[]
     experienceLevel?: string[]
-    currentStaffingProvider?: string[]
   }
 }
 
@@ -131,6 +131,7 @@ export async function submitLeadMagnet(prevState: LeadMagnetState, formData: For
     postcode: formData.get("postcode") as string,
     contactPhone: formData.get("contactPhone") as string,
     contactEmail: formData.get("contactEmail") as string,
+    currentStaffingProvider: formData.get("currentStaffingProvider") as string,
     staffTypeNeeded: formData.get("staffTypeNeeded") as string,
     numberOfStaff: formData.get("numberOfStaff") as string,
     dateNeeded: formData.get("dateNeeded") as string,
@@ -139,7 +140,6 @@ export async function submitLeadMagnet(prevState: LeadMagnetState, formData: For
     endTime: formData.get("endTime") as string,
     urgencyLevel: formData.get("urgencyLevel") as string,
     experienceLevel: formData.get("experienceLevel") as string,
-    currentStaffingProvider: formData.get("currentStaffingProvider") as string,
     specificRequirements: formData.get("specificRequirements") as string,
   }
 
@@ -181,6 +181,8 @@ export async function submitLeadMagnet(prevState: LeadMagnetState, formData: For
     errors.contactEmail = ["Please enter a valid email address"]
   }
 
+  // Current staffing provider is optional, no validation needed
+
   if (!data.staffTypeNeeded) {
     errors.staffTypeNeeded = ["Please select the type of staff needed"]
   }
@@ -211,10 +213,6 @@ export async function submitLeadMagnet(prevState: LeadMagnetState, formData: For
 
   if (!data.experienceLevel) {
     errors.experienceLevel = ["Please select the required experience level"]
-  }
-
-  if (!data.currentStaffingProvider) {
-    errors.currentStaffingProvider = ["Please select your current staffing provider"]
   }
 
   // Validate that end time is after start time
@@ -285,13 +283,13 @@ FREE SHIFT REQUEST - LEAD MAGNET
     <td style="font-weight: bold;">Email:</td>
     <td>${data.contactEmail}</td>
   </tr>
+  <tr>
+    <td style="font-weight: bold;">Current Provider:</td>
+    <td>${data.currentStaffingProvider || "Not specified"}</td>
+  </tr>
   
   <tr style="background-color: #f0f0f0;">
     <th colspan="2" style="text-align: left; font-size: 18px; padding: 12px;">Staffing Requirements</th>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">Current Provider:</td>
-    <td>${data.currentStaffingProvider}</td>
   </tr>
   <tr>
     <td style="font-weight: bold;">Staff Type:</td>
