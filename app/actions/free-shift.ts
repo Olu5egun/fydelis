@@ -18,7 +18,6 @@ export interface LeadMagnetData {
   startTime: string
   endTime: string
   urgencyLevel: string
-  experienceLevel: string
   specificRequirements?: string
 }
 
@@ -41,7 +40,6 @@ export interface LeadMagnetState {
     startTime?: string[]
     endTime?: string[]
     urgencyLevel?: string[]
-    experienceLevel?: string[]
   }
 }
 
@@ -141,7 +139,6 @@ export async function submitLeadMagnet(prevState: LeadMagnetState, formData: For
     startTime: formData.get("startTime") as string,
     endTime: formData.get("endTime") as string,
     urgencyLevel: formData.get("urgencyLevel") as string,
-    experienceLevel: formData.get("experienceLevel") as string,
     specificRequirements: formData.get("specificRequirements") as string,
   }
 
@@ -213,11 +210,6 @@ export async function submitLeadMagnet(prevState: LeadMagnetState, formData: For
     errors.urgencyLevel = ["Please select the urgency level"]
   }
 
-  if (!data.experienceLevel) {
-    errors.experienceLevel = ["Please select the required experience level"]
-  }
-
-  // Validate that end time is after start time
   if (data.startTime && data.endTime && validateTime(data.startTime) && validateTime(data.endTime)) {
     const [startHour, startMin] = data.startTime.split(":").map(Number)
     const [endHour, endMin] = data.endTime.split(":").map(Number)
@@ -268,7 +260,6 @@ export async function submitLeadMagnet(prevState: LeadMagnetState, formData: For
       <li><strong>Start Time:</strong> ${data.startTime}</li>
       <li><strong>End Time:</strong> ${data.endTime}</li>
       <li><strong>Urgency:</strong> ${data.urgencyLevel}</li>
-      <li><strong>Experience Level:</strong> ${data.experienceLevel}</li>
     </ul>
 
     ${

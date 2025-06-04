@@ -432,28 +432,6 @@ export default function LeadMagnetPage() {
                       </div>
 
                       <div className="grid md:grid-cols-2 gap-4 mt-4">
-                        {/* Experience Level */}
-                        <div>
-                          <Label htmlFor="experienceLevel" className="text-sm font-medium text-gray-700">
-                            Required Experience Level
-                          </Label>
-                          <Select name="experienceLevel" required disabled={isPending}>
-                            <SelectTrigger className={`mt-1 ${state?.errors?.experienceLevel ? "border-red-500" : ""}`}>
-                              <SelectValue placeholder="Select experience level" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="entry-level">Entry Level (0-1 years)</SelectItem>
-                              <SelectItem value="experienced">Experienced (2-5 years)</SelectItem>
-                              <SelectItem value="senior">Senior (5+ years)</SelectItem>
-                              <SelectItem value="specialist">Specialist/Expert (10+ years)</SelectItem>
-                              <SelectItem value="any">Any Experience Level</SelectItem>
-                            </SelectContent>
-                          </Select>
-                          {state?.errors?.experienceLevel && (
-                            <p className="mt-1 text-sm text-red-600">{state.errors.experienceLevel[0]}</p>
-                          )}
-                        </div>
-
                         {/* Urgency Level */}
                         <div>
                           <Label htmlFor="urgencyLevel" className="text-sm font-medium text-gray-700">
