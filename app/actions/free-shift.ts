@@ -1,5 +1,7 @@
 "use server"
 
+import { sendEmail } from "@/lib/email"
+
 export interface LeadMagnetData {
   fullName: string
   jobTitle: string
@@ -237,61 +239,66 @@ export async function submitLeadMagnet(prevState: LeadMagnetState, formData: For
   }
 
   try {
-    // Simulate processing delay
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-
-    // In a real application, you would:
-    // 1. Send an email to the lead magnet team
-    // 2. Create a record in the database
-    // 3. Send confirmation email to the client
-    // 4. Integrate with CRM system
-    // 5. Send lead magnet content (e.g., staffing guide PDF)
-
-    // Example email content that would be sent:
     // Email configuration
-    const emailSubject = "Free Shift - Trial Request"
+    const emailSubject = "Free Shift - Trial Request 🎁"
     const emailTo = "info@fydelis-care.com"
 
-    // Email content that would be sent to info@fydelis-care.com
-    const emailContent = `
-Subject: ${emailSubject}
-To: ${emailTo}
+    // Create HTML email content
+    const emailHtml = `
+      <h2 style="color: #059669;">🎁 FREE SHIFT TRIAL REQUEST</h2>
+      
+      <h3>Contact Details:</h3>
+      <ul>
+        <li><strong>Name:</strong> ${data.fullName}</li>
+        <li><strong>Job Title:</strong> ${data.jobTitle}</li>
+        <li><strong>Organisation:</strong> ${data.organisationName}</li>
+        <li><strong>Address:</strong> ${data.organisationAddress}</li>
+        <li><strong>Postcode:</strong> ${data.postcode}</li>
+        <li><strong>Phone:</strong> ${data.contactPhone}</li>
+        <li><strong>Email:</strong> ${data.contactEmail}</li>
+        <li><strong>Current Provider:</strong> ${data.currentStaffingProvider || "Not specified"}</li>
+      </ul>
 
-FREE SHIFT TRIAL REQUEST
+      <h3>Free Shift Requirements:</h3>
+      <ul>
+        <li><strong>Staff Type:</strong> ${data.staffTypeNeeded}</li>
+        <li><strong>Number of Staff:</strong> ${data.numberOfStaff}</li>
+        <li><strong>Date Needed:</strong> ${data.dateNeeded}</li>
+        <li><strong>Shift Type:</strong> ${data.shiftType}</li>
+        <li><strong>Start Time:</strong> ${data.startTime}</li>
+        <li><strong>End Time:</strong> ${data.endTime}</li>
+        <li><strong>Urgency:</strong> ${data.urgencyLevel}</li>
+        <li><strong>Experience Level:</strong> ${data.experienceLevel}</li>
+      </ul>
 
-Contact Details:
-- Name: ${data.fullName}
-- Job Title: ${data.jobTitle}
-- Organisation: ${data.organisationName}
-- Address: ${data.organisationAddress}
-- Postcode: ${data.postcode}
-- Phone: ${data.contactPhone}
-- Email: ${data.contactEmail}
-- Current Provider: ${data.currentStaffingProvider || "Not specified"}
+      ${
+        data.specificRequirements
+          ? `
+        <h3>Additional Requirements:</h3>
+        <p>${data.specificRequirements}</p>
+      `
+          : ""
+      }
 
-Staffing Requirements:
-- Staff Type: ${data.staffTypeNeeded}
-- Number of Staff: ${data.numberOfStaff}
-- Date Needed: ${data.dateNeeded}
-- Shift Type: ${data.shiftType}
-- Start Time: ${data.startTime}
-- End Time: ${data.endTime}
-- Urgency: ${data.urgencyLevel}
-- Experience Level: ${data.experienceLevel}
+      <div style="background-color: #f0fdf4; padding: 15px; border-left: 4px solid #059669; margin: 20px 0;">
+        <p><strong>🎯 Lead Magnet Opportunity:</strong> This is a FREE trial request - great chance to showcase our service quality!</p>
+      </div>
 
-${data.specificRequirements ? `Additional Requirements: ${data.specificRequirements}` : ""}
+      <hr>
+      <p><small>Submitted at: ${new Date().toISOString()}</small></p>
+    `
 
-Submitted at: ${new Date().toISOString()}
-`
+    // Send email
+    const emailResult = await sendEmail({
+      to: emailTo,
+      subject: emailSubject,
+      html: emailHtml,
+      replyTo: data.contactEmail,
+    })
 
-    console.log("Email that would be sent to info@fydelis-care.com:", emailContent)
-
-    // In a real application, you would send this email using a service like:
-    // await sendEmail({
-    //   to: emailTo,
-    //   subject: emailSubject,
-    //   html: emailContent
-    // })
+    if (!emailResult.success) {
+      throw new Error("Failed to send email")
+    }
 
     return {
       success: true,
@@ -304,7 +311,7 @@ Submitted at: ${new Date().toISOString()}
     return {
       success: false,
       message:
-        "Sorry, there was an error submitting your request. Please try again or call us directly at 07828173835.",
+        "Sorry, there was an error submitting your request. Please try again or call us directly at 0333 090 9417.",
     }
   }
 }

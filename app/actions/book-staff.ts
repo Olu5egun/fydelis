@@ -1,5 +1,7 @@
 "use server"
 
+import { sendEmail } from "@/lib/email"
+
 export interface StaffingRequestData {
   fullName: string
   jobTitle: string
@@ -54,10 +56,6 @@ function validatePhone(phone: string): boolean {
 
 function validateUKPostcode(postcode: string): boolean {
   // Comprehensive UK postcode validation regex
-  // Covers all UK postcode formats including:
-  // - Standard format: SW1A 1AA, M1 1AA, B33 8TH
-  // - London format: W1A 0AX, EC1A 1BB
-  // - Special cases: GIR 0AA (Girobank), BFPO codes
   const ukPostcodeRegex =
     /^(([A-Z]{1,2}[0-9][A-Z0-9]?|ASCN|STHL|TDCU|BBND|[BFS]IQQ|PCRN|TKCA) ?[0-9][A-Z]{2}|BFPO ?[0-9]{1,4}|(KY[0-9]|MSR|VG|AI)[ -]?[0-9]{4}|[A-Z]{2} ?[0-9]{2}|GE ?CX|GIR ?0A{2}|SAN ?TA1)$/i
 
@@ -239,60 +237,61 @@ export async function submitStaffingRequest(
   }
 
   try {
-    // Simulate processing delay
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-
-    // In a real application, you would:
-    // 1. Send an urgent email to the staffing team
-    // 2. Create a record in the database
-    // 3. Send confirmation email to the client
-    // 4. Integrate with staffing management system
-    // 5. Send SMS notifications for urgent requests
-
-    // Example email content that would be sent:
     // Email configuration
-    const emailSubject = "Book Staff - Urgent Staffing Request"
+    const emailSubject = "Book Staff - URGENT Staffing Request"
     const emailTo = "info@fydelis-care.com"
 
-    // Email content that would be sent to info@fydelis-care.com
-    const emailContent = `
-Subject: ${emailSubject}
-To: ${emailTo}
+    // Create HTML email content
+    const emailHtml = `
+      <h2 style="color: #dc2626;">🚨 URGENT STAFFING REQUEST</h2>
+      
+      <h3>Contact Details:</h3>
+      <ul>
+        <li><strong>Name:</strong> ${data.fullName}</li>
+        <li><strong>Job Title:</strong> ${data.jobTitle}</li>
+        <li><strong>Organisation:</strong> ${data.organisationName}</li>
+        <li><strong>Address:</strong> ${data.organisationAddress}</li>
+        <li><strong>Postcode:</strong> ${data.postcode}</li>
+        <li><strong>Phone:</strong> ${data.contactPhone}</li>
+        <li><strong>Email:</strong> ${data.contactEmail}</li>
+      </ul>
 
-URGENT STAFFING REQUEST
+      <h3>Staffing Requirements:</h3>
+      <ul>
+        <li><strong>Staff Type:</strong> ${data.staffTypeNeeded}</li>
+        <li><strong>Number of Staff:</strong> ${data.numberOfStaff}</li>
+        <li><strong>Date Needed:</strong> ${data.dateNeeded}</li>
+        <li><strong>Shift Type:</strong> ${data.shiftType}</li>
+        <li><strong>Start Time:</strong> ${data.startTime}</li>
+        <li><strong>End Time:</strong> ${data.endTime}</li>
+        <li><strong>Urgency:</strong> <span style="color: #dc2626; font-weight: bold;">${data.urgencyLevel}</span></li>
+        <li><strong>Experience Level:</strong> ${data.experienceLevel}</li>
+      </ul>
 
-Contact Details:
-- Name: ${data.fullName}
-- Job Title: ${data.jobTitle}
-- Organisation: ${data.organisationName}
-- Address: ${data.organisationAddress}
-- Postcode: ${data.postcode}
-- Phone: ${data.contactPhone}
-- Email: ${data.contactEmail}
+      ${
+        data.specificRequirements
+          ? `
+        <h3>Additional Requirements:</h3>
+        <p>${data.specificRequirements}</p>
+      `
+          : ""
+      }
 
-Staffing Requirements:
-- Staff Type: ${data.staffTypeNeeded}
-- Number of Staff: ${data.numberOfStaff}
-- Date Needed: ${data.dateNeeded}
-- Shift Type: ${data.shiftType}
-- Start Time: ${data.startTime}
-- End Time: ${data.endTime}
-- Urgency: ${data.urgencyLevel}
-- Experience Level: ${data.experienceLevel}
+      <hr>
+      <p><small>Submitted at: ${new Date().toISOString()}</small></p>
+    `
 
-${data.specificRequirements ? `Additional Requirements: ${data.specificRequirements}` : ""}
+    // Send email
+    const emailResult = await sendEmail({
+      to: emailTo,
+      subject: emailSubject,
+      html: emailHtml,
+      replyTo: data.contactEmail,
+    })
 
-Submitted at: ${new Date().toISOString()}
-`
-
-    console.log("Email that would be sent to info@fydelis-care.com:", emailContent)
-
-    // In a real application, you would send this email using a service like:
-    // await sendEmail({
-    //   to: emailTo,
-    //   subject: emailSubject,
-    //   html: emailContent
-    // })
+    if (!emailResult.success) {
+      throw new Error("Failed to send email")
+    }
 
     return {
       success: true,
@@ -305,7 +304,7 @@ Submitted at: ${new Date().toISOString()}
     return {
       success: false,
       message:
-        "Sorry, there was an error submitting your request. Please try again or call us directly at 07828173835.",
+        "Sorry, there was an error submitting your request. Please try again or call us directly at 0333 090 9417.",
     }
   }
 }

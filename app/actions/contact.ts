@@ -1,5 +1,7 @@
 "use server"
 
+import { sendEmail } from "@/lib/email"
+
 export interface ContactFormData {
   fullName: string
   contactType: string
@@ -78,68 +80,48 @@ export async function submitContactForm(prevState: ContactFormState, formData: F
   }
 
   try {
-    // Simulate sending email (in a real app, you'd integrate with an email service)
-    // For now, we'll just log the form data and simulate a delay
-    console.log("Contact form submission:", data)
-
     // Email configuration
     const emailSubject = "Contact Us - New Enquiry"
     const emailTo = "info@fydelis-care.com"
 
-    // Email content that would be sent to info@fydelis-care.com
-    const emailContent = `
-Subject: ${emailSubject}
-To: ${emailTo}
-
-New Contact Form Submission
-
-Contact Details:
-- Name: ${data.fullName}
-- Contact Type: ${data.contactType}
-- Organisation: ${data.organisationName || "Not specified"}
-- Reason: ${data.reason}
-- Phone: ${data.phone}
-- Email: ${data.email}
-
-${data.message ? `Message: ${data.message}` : ""}
-
-Submitted at: ${new Date().toISOString()}
-`
-
-    console.log("Email that would be sent to info@fydelis-care.com:", emailContent)
-
-    // In a real application, you would send this email using a service like:
-    // await sendEmail({
-    //   to: emailTo,
-    //   subject: emailSubject,
-    //   html: emailContent
-    // })
-
-    // Simulate email sending delay
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-
-    // In a real application, you would:
-    // 1. Send an email to the business using a service like Resend, SendGrid, or Nodemailer
-    // 2. Send a confirmation email to the user
-    // 3. Store the submission in a database
-    // 4. Integrate with a CRM system
-
-    // Example email content that would be sent:
-    const emailContent2 = `
-      New Contact Form Submission
+    // Create HTML email content
+    const emailHtml = `
+      <h2>New Contact Form Submission</h2>
       
-      Name: ${data.fullName}
-      Contact Type: ${data.contactType}
-      ${data.organisationName ? `Organisation: ${data.organisationName}` : ""}
-      Reason: ${data.reason}
-      Phone: ${data.phone}
-      Email: ${data.email}
-      ${data.message ? `Message: ${data.message}` : ""}
-      
-      Submitted at: ${new Date().toISOString()}
+      <h3>Contact Details:</h3>
+      <ul>
+        <li><strong>Name:</strong> ${data.fullName}</li>
+        <li><strong>Contact Type:</strong> ${data.contactType}</li>
+        ${data.organisationName ? `<li><strong>Organisation:</strong> ${data.organisationName}</li>` : ""}
+        <li><strong>Reason:</strong> ${data.reason}</li>
+        <li><strong>Phone:</strong> ${data.phone}</li>
+        <li><strong>Email:</strong> ${data.email}</li>
+      </ul>
+
+      ${
+        data.message
+          ? `
+        <h3>Message:</h3>
+        <p>${data.message}</p>
+      `
+          : ""
+      }
+
+      <hr>
+      <p><small>Submitted at: ${new Date().toISOString()}</small></p>
     `
 
-    console.log("Email that would be sent:", emailContent2)
+    // Send email
+    const emailResult = await sendEmail({
+      to: emailTo,
+      subject: emailSubject,
+      html: emailHtml,
+      replyTo: data.email, // Allow replying directly to the person who submitted
+    })
+
+    if (!emailResult.success) {
+      throw new Error("Failed to send email")
+    }
 
     return {
       success: true,
@@ -150,7 +132,7 @@ Submitted at: ${new Date().toISOString()}
 
     return {
       success: false,
-      message: "Sorry, there was an error sending your message. Please try again or call us directly at 07828173835.",
+      message: "Sorry, there was an error sending your message. Please try again or call us directly at 0333 090 9417.",
     }
   }
 }
