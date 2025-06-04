@@ -82,6 +82,39 @@ export async function submitContactForm(prevState: ContactFormState, formData: F
     // For now, we'll just log the form data and simulate a delay
     console.log("Contact form submission:", data)
 
+    // Email configuration
+    const emailSubject = "Contact Us - New Enquiry"
+    const emailTo = "info@fydelis-care.com"
+
+    // Email content that would be sent to info@fydelis-care.com
+    const emailContent = `
+Subject: ${emailSubject}
+To: ${emailTo}
+
+New Contact Form Submission
+
+Contact Details:
+- Name: ${data.fullName}
+- Contact Type: ${data.contactType}
+- Organisation: ${data.organisationName || "Not specified"}
+- Reason: ${data.reason}
+- Phone: ${data.phone}
+- Email: ${data.email}
+
+${data.message ? `Message: ${data.message}` : ""}
+
+Submitted at: ${new Date().toISOString()}
+`
+
+    console.log("Email that would be sent to info@fydelis-care.com:", emailContent)
+
+    // In a real application, you would send this email using a service like:
+    // await sendEmail({
+    //   to: emailTo,
+    //   subject: emailSubject,
+    //   html: emailContent
+    // })
+
     // Simulate email sending delay
     await new Promise((resolve) => setTimeout(resolve, 1000))
 
@@ -92,7 +125,7 @@ export async function submitContactForm(prevState: ContactFormState, formData: F
     // 4. Integrate with a CRM system
 
     // Example email content that would be sent:
-    const emailContent = `
+    const emailContent2 = `
       New Contact Form Submission
       
       Name: ${data.fullName}
@@ -106,7 +139,7 @@ export async function submitContactForm(prevState: ContactFormState, formData: F
       Submitted at: ${new Date().toISOString()}
     `
 
-    console.log("Email that would be sent:", emailContent)
+    console.log("Email that would be sent:", emailContent2)
 
     return {
       success: true,

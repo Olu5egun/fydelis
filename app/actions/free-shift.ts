@@ -248,108 +248,50 @@ export async function submitLeadMagnet(prevState: LeadMagnetState, formData: For
     // 5. Send lead magnet content (e.g., staffing guide PDF)
 
     // Example email content that would be sent:
+    // Email configuration
+    const emailSubject = "Free Shift - Trial Request"
+    const emailTo = "info@fydelis-care.com"
+
+    // Email content that would be sent to info@fydelis-care.com
     const emailContent = `
-FREE SHIFT REQUEST - LEAD MAGNET
+Subject: ${emailSubject}
+To: ${emailTo}
 
-<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%; font-family: Arial, sans-serif;">
-  <tr style="background-color: #f0f0f0;">
-    <th colspan="2" style="text-align: left; font-size: 18px; padding: 12px;">FREE SHIFT REQUEST - Contact Details</th>
-  </tr>
-  <tr>
-    <td style="font-weight: bold; width: 30%;">Name:</td>
-    <td>${data.fullName}</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">Job Title:</td>
-    <td>${data.jobTitle}</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">Organisation:</td>
-    <td>${data.organisationName}</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">Address:</td>
-    <td>${data.organisationAddress}</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">Postcode:</td>
-    <td>${data.postcode}</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">Phone:</td>
-    <td>${data.contactPhone}</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">Email:</td>
-    <td>${data.contactEmail}</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">Current Provider:</td>
-    <td>${data.currentStaffingProvider || "Not specified"}</td>
-  </tr>
-  
-  <tr style="background-color: #f0f0f0;">
-    <th colspan="2" style="text-align: left; font-size: 18px; padding: 12px;">Staffing Requirements</th>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">Staff Type:</td>
-    <td>${data.staffTypeNeeded}</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">Number of Staff:</td>
-    <td>${data.numberOfStaff}</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">Date Needed:</td>
-    <td>${data.dateNeeded}</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">Shift Type:</td>
-    <td>${data.shiftType}</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">Start Time:</td>
-    <td>${data.startTime}</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">End Time:</td>
-    <td>${data.endTime}</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">Urgency:</td>
-    <td>${data.urgencyLevel}</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">Experience Level:</td>
-    <td>${data.experienceLevel}</td>
-  </tr>
-  
-  ${
-    data.specificRequirements
-      ? `
-  <tr style="background-color: #f0f0f0;">
-    <th colspan="2" style="text-align: left; font-size: 18px; padding: 12px;">Additional Requirements</th>
-  </tr>
-  <tr>
-    <td colspan="2">${data.specificRequirements}</td>
-  </tr>
-  `
-      : ""
-  }
-  
-  <tr style="background-color: #f0f0f0;">
-    <th colspan="2" style="text-align: left; font-size: 18px; padding: 12px;">Submission Details</th>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">Submitted at:</td>
-    <td>${new Date().toISOString()}</td>
-  </tr>
-</table>
+FREE SHIFT TRIAL REQUEST
 
-Email would be sent to: freeshifts@fydelis-care.com
+Contact Details:
+- Name: ${data.fullName}
+- Job Title: ${data.jobTitle}
+- Organisation: ${data.organisationName}
+- Address: ${data.organisationAddress}
+- Postcode: ${data.postcode}
+- Phone: ${data.contactPhone}
+- Email: ${data.contactEmail}
+- Current Provider: ${data.currentStaffingProvider || "Not specified"}
+
+Staffing Requirements:
+- Staff Type: ${data.staffTypeNeeded}
+- Number of Staff: ${data.numberOfStaff}
+- Date Needed: ${data.dateNeeded}
+- Shift Type: ${data.shiftType}
+- Start Time: ${data.startTime}
+- End Time: ${data.endTime}
+- Urgency: ${data.urgencyLevel}
+- Experience Level: ${data.experienceLevel}
+
+${data.specificRequirements ? `Additional Requirements: ${data.specificRequirements}` : ""}
+
+Submitted at: ${new Date().toISOString()}
 `
 
-    console.log("Lead magnet submission that would be sent:", emailContent)
+    console.log("Email that would be sent to info@fydelis-care.com:", emailContent)
+
+    // In a real application, you would send this email using a service like:
+    // await sendEmail({
+    //   to: emailTo,
+    //   subject: emailSubject,
+    //   html: emailContent
+    // })
 
     return {
       success: true,
