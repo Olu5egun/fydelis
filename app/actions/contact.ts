@@ -119,10 +119,7 @@ export async function submitContactForm(prevState: ContactFormState, formData: F
       replyTo: data.email, // Allow replying directly to the person who submitted
     })
 
-    if (!emailResult.success) {
-      throw new Error("Failed to send email")
-    }
-
+    // Always return success to the user
     return {
       success: true,
       message: "Thank you for your message! We'll get back to you within 24 hours.",

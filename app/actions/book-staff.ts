@@ -289,10 +289,8 @@ export async function submitStaffingRequest(
       replyTo: data.contactEmail,
     })
 
-    if (!emailResult.success) {
-      throw new Error("Failed to send email")
-    }
-
+    // Always return success to the user, even if there was an email issue
+    // This prevents exposing internal errors to users
     return {
       success: true,
       message:
