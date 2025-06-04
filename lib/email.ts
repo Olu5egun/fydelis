@@ -13,7 +13,7 @@ export interface EmailOptions {
 export async function sendEmail({ to, subject, html, replyTo }: EmailOptions) {
   try {
     const { data, error } = await resend.emails.send({
-      from: "Fydelis Care <no-reply@fydelis-care.com>", // You can customize this
+      from: "Fydelis Care <noreply@fydelis-care.com>", // You can customize this
       to,
       subject,
       html,
