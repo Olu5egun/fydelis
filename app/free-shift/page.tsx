@@ -463,7 +463,7 @@ export default function LeadMagnetPage() {
                         {/* Date Needed */}
                         <div>
                           <Label htmlFor="dateNeeded" className="text-sm font-medium text-gray-700">
-                            Typical Date Needed
+                            Date Needed
                           </Label>
                           <Input
                             id="dateNeeded"
@@ -482,7 +482,7 @@ export default function LeadMagnetPage() {
                         {/* Shift Type */}
                         <div>
                           <Label htmlFor="shiftType" className="text-sm font-medium text-gray-700">
-                            Typical Shift Type
+                            Shift Type
                           </Label>
                           <Select name="shiftType" required disabled={isPending}>
                             <SelectTrigger className={`mt-1 ${state?.errors?.shiftType ? "border-red-500" : ""}`}>
