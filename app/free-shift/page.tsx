@@ -503,7 +503,7 @@ export default function LeadMagnetPage() {
                         {/* Start Time */}
                         <div>
                           <Label htmlFor="startTime" className="text-sm font-medium text-gray-700">
-                            Typical Start Time
+                            Start Time
                           </Label>
                           <Select name="startTime" required disabled={isPending}>
                             <SelectTrigger className={`mt-1 ${state?.errors?.startTime ? "border-red-500" : ""}`}>
@@ -526,7 +526,7 @@ export default function LeadMagnetPage() {
                         {/* End Time */}
                         <div>
                           <Label htmlFor="endTime" className="text-sm font-medium text-gray-700">
-                            Typical End Time
+                            End Time
                           </Label>
                           <Select name="endTime" required disabled={isPending}>
                             <SelectTrigger className={`mt-1 ${state?.errors?.endTime ? "border-red-500" : ""}`}>
