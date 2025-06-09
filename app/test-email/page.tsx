@@ -10,53 +10,13 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import Link from "next/link"
+import { testEmailAction, type TestEmailState } from "@/app/actions/test-email"
 
-// Test email action
-async function testEmailAction(prevState: any, formData: FormData) {
-  const testEmail = formData.get("testEmail") as string
-  const subject = formData.get("subject") as string
-  const message = formData.get("message") as string
-
-  try {
-    // Import the email function
-    const { sendEmail } = await import("@/lib/email")
-
-    const result = await sendEmail({
-      to: testEmail,
-      subject: subject || "Test Email - Fydelis Care",
-      html: `
-        <h2>Email Test Successful!</h2>
-        <p>This is a test email from the Fydelis Care website.</p>
-        ${message ? `<p><strong>Your message:</strong> ${message}</p>` : ""}
-        <hr>
-        <p><small>Sent at: ${new Date().toISOString()}</small></p>
-      `,
-      replyTo: "info@fydelis-care.com",
-    })
-
-    if (result.success) {
-      return {
-        success: true,
-        message: `✅ Email sent successfully! ${result.messageId ? `Message ID: ${result.messageId}` : ""}`,
-      }
-    } else {
-      return {
-        success: false,
-        message: `❌ Email failed to send: ${result.error || "Unknown error"}`,
-      }
-    }
-  } catch (error) {
-    console.error("Email test error:", error)
-    return {
-      success: false,
-      message: `❌ Error testing email: ${error instanceof Error ? error.message : "Unknown error"}`,
-    }
-  }
-}
+const initialState: TestEmailState = {}
 
 export default function TestEmailPage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [state, formAction, isPending] = useActionState(testEmailAction, {})
+  const [state, formAction, isPending] = useActionState(testEmailAction, initialState)
 
   return (
     <div className="min-h-screen bg-white pt-36 sm:pt-44 md:pt-52">
