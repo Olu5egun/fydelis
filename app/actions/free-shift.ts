@@ -1,7 +1,5 @@
 "use server"
 
-import { sendEmail } from "@/lib/email"
-
 export interface LeadMagnetData {
   fullName: string
   jobTitle: string
@@ -231,60 +229,29 @@ export async function submitLeadMagnet(prevState: LeadMagnetState, formData: For
   }
 
   try {
-    // Email configuration
-    const emailSubject = "Free Shift - Trial Request 🎁"
-    const emailTo = "info@fydelis-care.com"
-
-    // Create HTML email content
-    const emailHtml = `
-    <h2 style="color: #059669;">🎁 FREE SHIFT TRIAL REQUEST</h2>
-    
-    <h3>Contact Details:</h3>
-    <ul>
-      <li><strong>Name:</strong> ${data.fullName}</li>
-      <li><strong>Job Title:</strong> ${data.jobTitle}</li>
-      <li><strong>Organisation:</strong> ${data.organisationName}</li>
-      <li><strong>Address:</strong> ${data.organisationAddress}</li>
-      <li><strong>Postcode:</strong> ${data.postcode}</li>
-      <li><strong>Phone:</strong> ${data.contactPhone}</li>
-      <li><strong>Email:</strong> ${data.contactEmail}</li>
-      <li><strong>Current Provider:</strong> ${data.currentStaffingProvider || "Not specified"}</li>
-    </ul>
-
-    <h3>Free Shift Requirements:</h3>
-    <ul>
-      <li><strong>Staff Type:</strong> ${data.staffTypeNeeded}</li>
-      <li><strong>Number of Staff:</strong> ${data.numberOfStaff}</li>
-      <li><strong>Date Needed:</strong> ${data.dateNeeded}</li>
-      <li><strong>Shift Type:</strong> ${data.shiftType}</li>
-      <li><strong>Start Time:</strong> ${data.startTime}</li>
-      <li><strong>End Time:</strong> ${data.endTime}</li>
-      <li><strong>Urgency:</strong> ${data.urgencyLevel}</li>
-    </ul>
-
-    ${
-      data.specificRequirements
-        ? `
-      <h3>Additional Requirements:</h3>
-      <p>${data.specificRequirements}</p>
-    `
-        : ""
-    }
-
-    <div style="background-color: #f0fdf4; padding: 15px; border-left: 4px solid #059669; margin: 20px 0;">
-      <p><strong>🎯 Lead Magnet Opportunity:</strong> This is a FREE trial request - great chance to showcase our service quality!</p>
-    </div>
-
-    <hr>
-    <p><small>Submitted at: ${new Date().toISOString()}</small></p>
-  `
-
-    // Send email
-    const emailResult = await sendEmail({
-      to: emailTo,
-      subject: emailSubject,
-      html: emailHtml,
-      replyTo: data.contactEmail,
+    // Log the free shift request (since we removed email functionality)
+    console.log("Free shift request submission:", {
+      contact: {
+        name: data.fullName,
+        jobTitle: data.jobTitle,
+        organisation: data.organisationName,
+        address: data.organisationAddress,
+        postcode: data.postcode,
+        phone: data.contactPhone,
+        email: data.contactEmail,
+        currentProvider: data.currentStaffingProvider,
+      },
+      requirements: {
+        staffType: data.staffTypeNeeded,
+        numberOfStaff: data.numberOfStaff,
+        dateNeeded: data.dateNeeded,
+        shiftType: data.shiftType,
+        startTime: data.startTime,
+        endTime: data.endTime,
+        urgency: data.urgencyLevel,
+        requirements: data.specificRequirements,
+      },
+      timestamp: new Date().toISOString(),
     })
 
     // Always return success to the user

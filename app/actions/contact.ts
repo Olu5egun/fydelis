@@ -1,7 +1,5 @@
 "use server"
 
-import { sendEmail } from "@/lib/email"
-
 export interface ContactFormData {
   fullName: string
   contactType: string
@@ -80,43 +78,16 @@ export async function submitContactForm(prevState: ContactFormState, formData: F
   }
 
   try {
-    // Email configuration
-    const emailSubject = "Contact Us - New Enquiry"
-    const emailTo = "info@fydelis-care.com"
-
-    // Create HTML email content
-    const emailHtml = `
-      <h2>New Contact Form Submission</h2>
-      
-      <h3>Contact Details:</h3>
-      <ul>
-        <li><strong>Name:</strong> ${data.fullName}</li>
-        <li><strong>Contact Type:</strong> ${data.contactType}</li>
-        ${data.organisationName ? `<li><strong>Organisation:</strong> ${data.organisationName}</li>` : ""}
-        <li><strong>Reason:</strong> ${data.reason}</li>
-        <li><strong>Phone:</strong> ${data.phone}</li>
-        <li><strong>Email:</strong> ${data.email}</li>
-      </ul>
-
-      ${
-        data.message
-          ? `
-        <h3>Message:</h3>
-        <p>${data.message}</p>
-      `
-          : ""
-      }
-
-      <hr>
-      <p><small>Submitted at: ${new Date().toISOString()}</small></p>
-    `
-
-    // Send email
-    const emailResult = await sendEmail({
-      to: emailTo,
-      subject: emailSubject,
-      html: emailHtml,
-      replyTo: data.email, // Allow replying directly to the person who submitted
+    // Log the contact form submission (since we removed email functionality)
+    console.log("Contact form submission:", {
+      name: data.fullName,
+      type: data.contactType,
+      organisation: data.organisationName,
+      reason: data.reason,
+      phone: data.phone,
+      email: data.email,
+      message: data.message,
+      timestamp: new Date().toISOString(),
     })
 
     // Always return success to the user

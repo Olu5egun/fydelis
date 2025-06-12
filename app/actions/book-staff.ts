@@ -1,7 +1,5 @@
 "use server"
 
-import { sendEmail } from "@/lib/email"
-
 export interface StaffingRequestData {
   fullName: string
   jobTitle: string
@@ -230,59 +228,31 @@ export async function submitStaffingRequest(
   }
 
   try {
-    // Email configuration
-    const emailSubject = "Book Staff - URGENT Staffing Request"
-    const emailTo = "info@fydelis-care.com"
-
-    // Create HTML email content
-    const emailHtml = `
-      <h2 style="color: #dc2626;">🚨 URGENT STAFFING REQUEST</h2>
-      
-      <h3>Contact Details:</h3>
-      <ul>
-        <li><strong>Name:</strong> ${data.fullName}</li>
-        <li><strong>Job Title:</strong> ${data.jobTitle}</li>
-        <li><strong>Organisation:</strong> ${data.organisationName}</li>
-        <li><strong>Address:</strong> ${data.organisationAddress}</li>
-        <li><strong>Postcode:</strong> ${data.postcode}</li>
-        <li><strong>Phone:</strong> ${data.contactPhone}</li>
-        <li><strong>Email:</strong> ${data.contactEmail}</li>
-      </ul>
-
-      <h3>Staffing Requirements:</h3>
-      <ul>
-        <li><strong>Staff Type:</strong> ${data.staffTypeNeeded}</li>
-        <li><strong>Number of Staff:</strong> ${data.numberOfStaff}</li>
-        <li><strong>Date Needed:</strong> ${data.dateNeeded}</li>
-        <li><strong>Shift Type:</strong> ${data.shiftType}</li>
-        <li><strong>Start Time:</strong> ${data.startTime}</li>
-        <li><strong>End Time:</strong> ${data.endTime}</li>
-        <li><strong>Urgency:</strong> <span style="color: #dc2626; font-weight: bold;">${data.urgencyLevel}</span></li>
-      </ul>
-
-      ${
-        data.specificRequirements
-          ? `
-        <h3>Additional Requirements:</h3>
-        <p>${data.specificRequirements}</p>
-      `
-          : ""
-      }
-
-      <hr>
-      <p><small>Submitted at: ${new Date().toISOString()}</small></p>
-    `
-
-    // Send email
-    const emailResult = await sendEmail({
-      to: emailTo,
-      subject: emailSubject,
-      html: emailHtml,
-      replyTo: data.contactEmail,
+    // Log the staffing request (since we removed email functionality)
+    console.log("Staffing request submission:", {
+      contact: {
+        name: data.fullName,
+        jobTitle: data.jobTitle,
+        organisation: data.organisationName,
+        address: data.organisationAddress,
+        postcode: data.postcode,
+        phone: data.contactPhone,
+        email: data.contactEmail,
+      },
+      requirements: {
+        staffType: data.staffTypeNeeded,
+        numberOfStaff: data.numberOfStaff,
+        dateNeeded: data.dateNeeded,
+        shiftType: data.shiftType,
+        startTime: data.startTime,
+        endTime: data.endTime,
+        urgency: data.urgencyLevel,
+        requirements: data.specificRequirements,
+      },
+      timestamp: new Date().toISOString(),
     })
 
-    // Always return success to the user, even if there was an email issue
-    // This prevents exposing internal errors to users
+    // Always return success to the user
     return {
       success: true,
       message:
